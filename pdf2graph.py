@@ -301,26 +301,30 @@ if config["Zotero"]["enabled"]:
     dir = config["Zotero"]["Zotero_dir"]
 
 def process_zotero_document(item: dict, papers: list) -> None:
-    print('Item: %s ' % (item['data']['title']))
+    if 'title' in item['data']:
+        print('Item: %s ' % (item['data']['title']))
+    else:
+        print('Item: %s ' % (item['key']))
     
     meta = item
     zot_file = ''
-    if 'contentType' in item['data']:
-        if item['data']['contentType'] == 'application/pdf':
-            zot_file = dir + item['key'] + '/'+ item['data']['filename']
+    if item['data'].get('contentType') == 'application/pdf':
+        zot_file = dir + item['key'] + '/'
+        for file in os.listdir(zot_file):
+            if file.endswith(".pdf"):
+                zot_file += file
+                break
             
     else:
-        if 'numChildren' in item['meta']:
-            if item['meta']['numChildren'] > 0:
-                it=zot.children(item['data']['key'])
-                for i in it:
-                    if i['data']['contentType'] == 'application/pdf':
-                        zot_file = dir + i['key'] + '/'+ i['data']['filename']
-                        if os.path.exists(zot_file):
+        if item['meta'].get('numChildren') > 0:
+            it=zot.children(item['key'])
+            for i in it:
+                if i['data'].get('contentType') == 'application/pdf':
+                    zot_file = dir + i['key'] + '/'
+                    for file in os.listdir(zot_file):
+                        if file.endswith(".pdf"):
+                            zot_file += file
                             break
-                        # break
-                        else:
-                            zot_file = ''
         
     if zot_file == '':
         print(f"Document not found: {item['key']}")
@@ -353,7 +357,10 @@ def find_in_zotero(title: str) -> None:
     items = zot.items(q=title,limit=10)
     if len(items)>1:
         for i,item in enumerate(items):
-            print('[%d]: %s ' % (i,item['data']['title']))
+            if 'title' in item['data']:
+                print('[%d]: %s ' % (i,item['data']['title']))
+            else:
+                print('[%d]: %s ' % (i,item['key']))
         print("Select the document to process:")
         index = int(input())
         if index < 0 or index >= len(items):
