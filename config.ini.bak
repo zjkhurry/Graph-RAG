@@ -18,7 +18,7 @@ api_key = sk-123456
 api_base = http://127.0.0.1:8080/v1
 
 [Ollama]
-model = llama3
+model = interstellarninja/hermes-2-pro-llama-3-8b
 #num_ctx is the number of context tokens, which is the maximum number of tokens that can be processed at a time
 num_ctx = 2048
 
@@ -47,7 +47,7 @@ model = mxbai-embed-large
 #chatbot, Ollama or OpenAI, left empty to use the llm model
 chatbot = Ollama
 #chatbot model, gpt-3.5-turbo for OpenAI, phi3 for Ollama
-model = llama3
+model = interstellarninja/hermes-2-pro-llama-3-8b
 #chatbot temperature
 temperature = 0.8
 #chatbot max_tokens
