@@ -32,7 +32,7 @@ brew install --cask neo4j
    
 Secondly, install dependencies
 ```
-pip install requitements
+pip install -r requitements
 ```
 
 Thirdly, config the zotero. [Pyzotero](https://github.com/urschrei/pyzotero) is used to connect to Zotero library. You'll need the ID of the personal or group library you want to access:
