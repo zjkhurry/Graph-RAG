@@ -34,8 +34,15 @@ brew install --cask neo4j
 ![avatar](res/4.png)
 3. Start the Graph DBMS.
    
+**Step3 (optional)** Set up [Ollama](https://ollama.com) or [llama.cpp](https://github.com/ggerganov/llama.cpp) to use local LLM.
+- For Ollama, download the app [here](https://ollama.com), run Ollama and then
+```
+ollama pull llama3
+ollama pull mxbai-embed-large
+```
+- For llama.cpp, follow the instruction [here](https://github.com/ggerganov/llama.cpp) to build and run llama.cpp server.
 
-**Step3**, config the zotero. [Pyzotero](https://github.com/urschrei/pyzotero) is used to connect to Zotero library. You'll need the ID of the personal or group library you want to access:
+**Step4**, config the zotero. [Pyzotero](https://github.com/urschrei/pyzotero) is used to connect to Zotero library. You'll need the ID of the personal or group library you want to access:
 - Your personal library ID is available [here](https://www.zotero.org/settings/keys), in the section Your userID for use in API calls (you may need to login). Enter you ID into [config.ini](./config.ini)
 - For group libraries, the ID can be found by opening the group's page: https://www.zotero.org/groups/groupname, and hovering over the group settings link. The ID is the integer after /groups/
 - You'll also need to get an API key [here](https://www.zotero.org/settings/keys/new), enter you API key into [config.ini](./config.ini)
@@ -44,7 +51,7 @@ brew install --cask neo4j
 
 *P.S. I can't make Zotero.file() work properly, maybe because I use WebDAV instead of zotero to store the pdf files, so Zotero_dir is needed to find the PDFs in the file system.* 
 
-**Step4**, modify the config.ini, choose to use ollama or openai (llama.cpp), LLM model, embedding model and so on. You can choose different models for convert PDF, embedding and chat.
+**Step5**, modify the config.ini, choose to use ollama or openai (llama.cpp), LLM model, embedding model and so on. You can choose different models for convert PDF, embedding and chat.
 
 ## Usage
 To convert PDF files into graph, just use the dpf2graph.py
@@ -58,9 +65,9 @@ After convert, you can run graphQA.py to query this graph, enter exit to stop.
 python graphQA.py
 ```
 
-## Acknowledge
+## References
 [openai cookbook](https://github.com/openai/openai-cookbook/blob/main/examples/RAG_with_graph_db.ipynb)
 [Langchain](https://github.com/langchain-ai/langchain/tree/master)
 [Neo4j](https://github.com/neo4j/neo4j?tab=readme-ov-file)
 [Pyzotero](https://github.com/urschrei/pyzotero)
-
+[blogs](https://github.com/tomasonjo/blogs/blob/master/llm/enhancing_rag_with_graph.ipynb?ref=blog.langchain.dev)
