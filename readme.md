@@ -37,9 +37,10 @@ brew install --cask neo4j
 **Step3 (optional)** Set up [Ollama](https://ollama.com) or [llama.cpp](https://github.com/ggerganov/llama.cpp) to use local LLM.
 - For Ollama, download the app [here](https://ollama.com), run Ollama and then
 ```
-ollama pull llama3
+ollama pull interstellarninja/hermes-2-pro-llama-3-8b
 ollama pull mxbai-embed-large
 ```
+*P.S. hermers-2-pro has a better sepport to function calling than original llama3.*
 - For llama.cpp, follow the instruction [here](https://github.com/ggerganov/llama.cpp) to build and run llama.cpp server.
 
 **Step4**, config the zotero. [Pyzotero](https://github.com/urschrei/pyzotero) is used to connect to Zotero library. You'll need the ID of the personal or group library you want to access:
