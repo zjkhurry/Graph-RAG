@@ -314,6 +314,8 @@ def process_zotero_document(item: dict, papers: list) -> None:
             if file.endswith(".pdf"):
                 zot_file += file
                 break
+            else:
+                zot_file = ''
             
     else:
         if item['meta'].get('numChildren') > 0:
@@ -325,6 +327,8 @@ def process_zotero_document(item: dict, papers: list) -> None:
                         if file.endswith(".pdf"):
                             zot_file += file
                             break
+                        else:
+                            zot_file = ''
         
     if zot_file == '':
         print(f"Document not found: {item['key']}")
