@@ -7,3 +7,4 @@ langchain_openai
 pydantic
 pyzotero
 unstructured
+pytesseract
