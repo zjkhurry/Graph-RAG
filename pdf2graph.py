@@ -394,15 +394,32 @@ def cli():
     while True:
         action = input("\nEnter a PDF path or Zotero paper title, or 'all' for all the items in Zotero, or 'quit' to exit: ")
         if os.path.exists(action):
-            print("Processing document %s" % action)
-            process_document(
-                action, 
-                {"source": action}, 
-                images=bool(config["PDF"]["extract_images"]),
-                max_char=int(config["PDF"]["max_char"]),
-                new_after_n_chars=int(config["PDF"]["new_after_n_chars"]),
-                combine=int(config["PDF"]["combine_text_under_n_chars"]),
-            )
+            _, ext = os.path.splitext(action)
+            if ext == '.pdf':
+                print("Processing document %s" % action)
+                process_document(
+                    action, 
+                    {"source": action}, 
+                    images=bool(config["PDF"]["extract_images"]),
+                    max_char=int(config["PDF"]["max_char"]),
+                    new_after_n_chars=int(config["PDF"]["new_after_n_chars"]),
+                    combine=int(config["PDF"]["combine_text_under_n_chars"]),
+                )
+            else:
+                try:
+                    for file in os.listdir(action):
+                        if file.endswith(".pdf"):
+                            print("Processing document %s" % file)
+                            process_document(
+                                action + '/' + file, 
+                                {"source": action}, 
+                                images=bool(config["PDF"]["extract_images"]),
+                                max_char=int(config["PDF"]["max_char"]),
+                                new_after_n_chars=int(config["PDF"]["new_after_n_chars"]),
+                                combine=int(config["PDF"]["combine_text_under_n_chars"]),
+                            )
+                except:
+                    print("Invalid input.")
         elif action == 'all':
             if config["Zotero"]["enabled"]:
                 all_in_zotero()
