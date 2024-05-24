@@ -318,7 +318,7 @@ def process_zotero_document(item: dict, papers: list) -> None:
                 zot_file = ''
             
     else:
-        if item['meta'].get('numChildren') > 0:
+        if item['meta'].get('numChildren',0) > 0:
             it=zot.children(item['key'])
             for i in it:
                 if i['data'].get('contentType') == 'application/pdf':
