@@ -24,7 +24,7 @@ The reference is a knowledge graph shown below
  ```
  git clone https://github.com/zjkhurry/Graph-RAG.git
  cd Graph-RAG
- pip install requitements
+ pip install -r requitements
  ```
  Copy and midofy [config.ini](./config.ini)
  ```
