@@ -8,3 +8,6 @@ pydantic
 pyzotero
 unstructured
 pytesseract
+poppler
+ollama chromadb
+pytesseract
