@@ -1,0 +1,56 @@
+[Neo4j]
+uri = bolt://localhost:7687
+username = neo4j
+password = 12345678
+
+[LLM]
+#Ollama or OpenAI (llama.cpp server or OpenAI API)
+llm = Ollama
+temperature = 0.0
+#max_tokens is the maximum number of tokens that can be generated
+max_tokens = 2048
+stop = ["<|im_end|>"]
+
+[OpenAI]
+model = gpt-3.5-turbo
+api_key = sk-123456
+#api_base for llama.cpp server, leave it empty for OpenAI API
+api_base = http://127.0.0.1:8080/v1
+
+[Ollama]
+model = llama3
+#num_ctx is the number of context tokens, which is the maximum number of tokens that can be processed at a time
+num_ctx = 2048
+
+[Zotero]
+enabled = True
+library_id = 12345678
+library_type = user
+api_key = xxxxxx
+#Zotero_dir is the directory where the attachments are stored
+Zotero_dir = /Path/To/Zotero/storage/
+
+[PDF]
+#extract_images is used to extract images from PDF files
+extract_images = False
+max_char = 1000
+new_after_n_chars = 800
+combine_text_under_n_chars = 200
+
+[Embeddings]
+#embedding method, Ollama or OpenAI
+embeddings = Ollama
+#text-embedding-3-small for OpenAI, mxbai-embed-large for Ollama, left empty to use the llm model
+model = mxbai-embed-large
+
+[Chat]
+#chatbot, Ollama or OpenAI, left empty to use the llm model
+chatbot = Ollama
+#chatbot model, gpt-3.5-turbo for OpenAI, phi3 for Ollama
+model = llama3
+#chatbot temperature
+temperature = 0.8
+#chatbot max_tokens
+max_tokens = 2048
+#chatbot stop
+stop = ["<|im_end|>","USER:"]

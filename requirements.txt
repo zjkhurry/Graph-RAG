@@ -6,8 +6,12 @@ langchain_experimental
 langchain_openai
 pydantic
 pyzotero
-unstructured
+unstructured[all-docs]
 pytesseract
-poppler
-ollama chromadb
+ollama 
+chromadb
 pytesseract
+pdfminer
+numpy==1.26.3
+neo4j
+opencv-python-headless>=4.8.0.76
